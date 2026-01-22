@@ -3,99 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Landing Page</title>
+<title>ActionMods Landing</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-    /* Reset & base styles */
-    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif;}
-    body, html {
-        height:100%;
-        overflow:hidden;
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        flex-direction:column;
-        position:relative;
-        color:white;
-    }
+/* ===== Reset ===== */
+* {margin:0; padding:0; box-sizing:border-box;}
+body, html {height:100%; font-family: 'Poppins', sans-serif; scroll-behavior:smooth;}
 
-    /* Animated background circles */
-    .circle {
-        position:absolute;
-        border-radius:50%;
-        opacity:0.15;
-        animation: float 20s linear infinite;
-    }
-    .circle:nth-child(1) {width:200px;height:200px; background:#ff6b6b; top:10%; left:15%; animation-duration:25s;}
-    .circle:nth-child(2) {width:300px;height:300px; background:#feca57; top:70%; left:70%; animation-duration:30s;}
-    .circle:nth-child(3) {width:150px;height:150px; background:#48dbfb; top:40%; left:50%; animation-duration:22s;}
-    .circle:nth-child(4) {width:250px;height:250px; background:#1dd1a1; top:20%; left:80%; animation-duration:28s;}
+/* ===== Background ===== */
+body {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    position:relative;
+    color:#fff;
+    overflow-x:hidden;
+}
 
-    @keyframes float {
-        0% {transform: translateY(0) translateX(0);}
-        50% {transform: translateY(-50px) translateX(50px);}
-        100% {transform: translateY(0) translateX(0);}
-    }
+/* ===== Animated Circles ===== */
+.circle {
+    position:absolute;
+    border-radius:50%;
+    opacity:0.12;
+    animation: float 25s linear infinite;
+}
+.circle:nth-child(1) {width:180px;height:180px;background:#ff6b6b; top:5%; left:10%; animation-duration:28s;}
+.circle:nth-child(2) {width:250px;height:250px;background:#feca57; top:70%; left:65%; animation-duration:32s;}
+.circle:nth-child(3) {width:140px;height:140px;background:#48dbfb; top:35%; left:50%; animation-duration:26s;}
+.circle:nth-child(4) {width:220px;height:220px;background:#1dd1a1; top:15%; left:75%; animation-duration:30s;}
+@keyframes float {0%,100% {transform:translate(0,0);}50% {transform:translate(50px,-50px);}}
 
-    /* Logo styling */
-    .logo {
-        width:150px;
-        height:150px;
-        background:url('logo.jpg') no-repeat center/contain;
-        margin-bottom:40px;
-        animation: logoBounce 2s ease-in-out infinite;
-    }
-    @keyframes logoBounce {
-        0%,100% {transform: translateY(0);}
-        50% {transform: translateY(-20px);}
-    }
+/* ===== Logo ===== */
+.logo {
+    width:150px; height:150px;
+    background:url('logo.png') no-repeat center/contain;
+    margin-bottom:40px;
+    animation: logoBounce 2s ease-in-out infinite;
+}
+@keyframes logoBounce {0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
 
-    /* Button styling */
-    .access-btn {
-        padding:15px 40px;
-        font-size:18px;
-        font-weight:bold;
-        color:#fff;
-        background:linear-gradient(45deg,#ff6b6b,#feca57,#48dbfb,#1dd1a1);
-        background-size:300% 300%;
-        border:none;
-        border-radius:50px;
-        cursor:pointer;
-        animation: gradientAnim 5s ease infinite;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .access-btn:hover {
-        transform: scale(1.1);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
-    @keyframes gradientAnim {
-        0%{background-position:0% 50%;}
-        50%{background-position:100% 50%;}
-        100%{background-position:0% 50%;}
-    }
+/* ===== Buttons ===== */
+.button {
+    padding:15px 40px;
+    font-size:18px;
+    font-weight:600;
+    color:#fff;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    background:linear-gradient(45deg,#ff6b6b,#feca57,#48dbfb,#1dd1a1);
+    background-size:300% 300%;
+    margin:10px;
+    animation: gradientAnim 6s ease infinite;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration:none;
+    display:inline-block;
+}
+.button:hover {transform:scale(1.1); box-shadow:0 10px 25px rgba(0,0,0,0.4);}
+@keyframes gradientAnim {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
-    /* Mobile responsive */
-    @media(max-width:480px){
-        .logo {width:120px; height:120px; margin-bottom:30px;}
-        .access-btn {padding:12px 30px; font-size:16px;}
-    }
+/* ===== Footer ===== */
+footer {
+    position:absolute;
+    bottom:15px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+footer img {
+    width:40px;
+    cursor:pointer;
+    transition: transform 0.2s;
+}
+footer img:hover {transform:scale(1.2);}
+footer .contact-btn {
+    background:rgba(255,255,255,0.1);
+    padding:8px 20px;
+    border-radius:20px;
+    font-size:14px;
+    color:#fff;
+    text-decoration:none;
+    transition:0.2s;
+}
+footer .contact-btn:hover {background:rgba(255,255,255,0.3);}
+
+/* ===== Responsive ===== */
+@media(max-width:480px){
+    .logo {width:120px; height:120px; margin-bottom:30px;}
+    .button {padding:12px 30px; font-size:16px;}
+    footer img {width:35px;}
+    footer .contact-btn {font-size:12px;}
+}
 </style>
 </head>
 <body>
-    <!-- Animated circles -->
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
 
-    <!-- Logo -->
-    <div class="logo"></div>
+<!-- Animated Circles -->
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
 
-    <!-- Access button -->
+<!-- Logo -->
+<div class="logo"></div>
+
+<!-- Main Buttons -->
+<a href="https://t.me/sohamgameplay" target="_blank" class="button">Access Content</a>
+<a href="#contact" class="button">Contact Us</a>
+
+<!-- Footer -->
+<footer>
     <a href="https://t.me/sohamgameplay" target="_blank">
-        <button class="access-btn">Access Content</button>
+        <img src="telegram-logo.png" alt="Telegram">
     </a>
+    <a id="contact" href="mailto:actionmods@example.com" class="contact-btn">Contact via Email</a>
+</footer>
 
 </body>
 </html>
