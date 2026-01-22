@@ -4,49 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ActionMods Landing</title>
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-b6p8fO6p1j4K2L0/ktDqw8eG6pS0Ktc+kJ9h4C71skLZ4jU4ZK0Y0Slz3C20yBrT8XKd3C5DZjQ1gB0bGZ3IhA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Emoji CSS CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/css/emojione.min.css" integrity="sha512-2UqkGqNRx15g7jl7Gmcu+c06r8+I5Dc6oU6l4JReBS7sltdoNnH72Eo4xUGsG+rc8oXkKUOaRzCRfFuh0m9PA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Particles.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
 <style>
 /* ===== Reset ===== */
 * {margin:0; padding:0; box-sizing:border-box;}
-body, html {height:100%; font-family: 'Poppins', sans-serif; scroll-behavior:smooth;}
+body, html {height:100%; font-family: 'Poppins', sans-serif; overflow-x:hidden; scroll-behavior:smooth;}
 
 /* ===== Background ===== */
-body {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    position:relative;
-    color:#fff;
-    overflow-x:hidden;
+#particles-js {
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    top:0;
+    left:0;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 }
 
-/* ===== Animated Circles ===== */
-.circle {
-    position:absolute;
-    border-radius:50%;
-    opacity:0.12;
-    animation: float 25s linear infinite;
+/* ===== Center Content ===== */
+.container {
+    position:relative;
+    z-index:10;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
 }
-.circle:nth-child(1) {width:180px;height:180px;background:#ff6b6b; top:5%; left:10%; animation-duration:28s;}
-.circle:nth-child(2) {width:250px;height:250px;background:#feca57; top:70%; left:65%; animation-duration:32s;}
-.circle:nth-child(3) {width:140px;height:140px;background:#48dbfb; top:35%; left:50%; animation-duration:26s;}
-.circle:nth-child(4) {width:220px;height:220px;background:#1dd1a1; top:15%; left:75%; animation-duration:30s;}
-@keyframes float {0%,100% {transform:translate(0,0);}50% {transform:translate(50px,-50px);}}
 
 /* ===== Logo ===== */
 .logo {
-    width:150px; height:150px;
+    width:180px;
+    height:180px;
     background:url('logo.png') no-repeat center/contain;
     margin-bottom:40px;
     animation: logoBounce 2s ease-in-out infinite;
 }
-@keyframes logoBounce {0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
+@keyframes logoBounce {0%,100%{transform:translateY(0);}50%{transform:translateY(-25px);}}
 
 /* ===== Buttons ===== */
 .button {
-    padding:15px 40px;
+    padding:16px 45px;
     font-size:18px;
     font-weight:600;
     color:#fff;
@@ -55,46 +66,58 @@ body {
     cursor:pointer;
     background:linear-gradient(45deg,#ff6b6b,#feca57,#48dbfb,#1dd1a1);
     background-size:300% 300%;
-    margin:10px;
+    margin:12px;
     animation: gradientAnim 6s ease infinite;
     box-shadow:0 5px 15px rgba(0,0,0,0.3);
     transition: transform 0.2s, box-shadow 0.2s;
     text-decoration:none;
-    display:inline-block;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
 }
 .button:hover {transform:scale(1.1); box-shadow:0 10px 25px rgba(0,0,0,0.4);}
 @keyframes gradientAnim {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
+/* ===== Emojis Section ===== */
+.emoji-text {
+    font-size:24px;
+    margin-top:20px;
+    animation: fadeInUp 2s ease forwards;
+}
+@keyframes fadeInUp {0%{opacity:0; transform:translateY(20px);}100%{opacity:1; transform:translateY(0);}}
+
 /* ===== Footer ===== */
 footer {
-    position:absolute;
-    bottom:15px;
+    position:relative;
+    margin-top:40px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:10px;
+    gap:12px;
+    z-index:10;
 }
 footer img {
-    width:40px;
+    width:45px;
     cursor:pointer;
     transition: transform 0.2s;
 }
 footer img:hover {transform:scale(1.2);}
 footer .contact-btn {
-    background:rgba(255,255,255,0.1);
-    padding:8px 20px;
-    border-radius:20px;
+    background:rgba(255,255,255,0.15);
+    padding:10px 25px;
+    border-radius:25px;
     font-size:14px;
     color:#fff;
     text-decoration:none;
     transition:0.2s;
 }
-footer .contact-btn:hover {background:rgba(255,255,255,0.3);}
+footer .contact-btn:hover {background:rgba(255,255,255,0.35);}
 
 /* ===== Responsive ===== */
 @media(max-width:480px){
-    .logo {width:120px; height:120px; margin-bottom:30px;}
+    .logo {width:140px;height:140px;margin-bottom:25px;}
     .button {padding:12px 30px; font-size:16px;}
+    .emoji-text {font-size:20px;}
     footer img {width:35px;}
     footer .contact-btn {font-size:12px;}
 }
@@ -102,26 +125,56 @@ footer .contact-btn:hover {background:rgba(255,255,255,0.3);}
 </head>
 <body>
 
-<!-- Animated Circles -->
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
+<!-- Particles Background -->
+<div id="particles-js"></div>
 
-<!-- Logo -->
-<div class="logo"></div>
+<!-- Main Container -->
+<div class="container">
+    <!-- Logo -->
+    <div class="logo"></div>
 
-<!-- Main Buttons -->
-<a href="https://t.me/sohamgameplay" target="_blank" class="button">Access Content</a>
-<a href="#contact" class="button">Contact Us</a>
+    <!-- Access Button -->
+    <a href="https://t.me/sohamgameplay" target="_blank" class="button">
+        <i class="fab fa-telegram-plane"></i> Access Content
+    </a>
+
+    <!-- Emojis -->
+    <div class="emoji-text">
+        🚀✨🔥 Join the adventure! 🌟🎮💥
+    </div>
+</div>
 
 <!-- Footer -->
 <footer>
     <a href="https://t.me/sohamgameplay" target="_blank">
         <img src="telegram-logo.png" alt="Telegram">
     </a>
-    <a id="contact" href="mailto:actionmods@example.com" class="contact-btn">Contact via Email</a>
+    <a href="mailto:actionmods@example.com" class="contact-btn"><i class="fas fa-envelope"></i> Contact Us</a>
 </footer>
+
+<!-- ===== Particles JS Config ===== -->
+<script>
+particlesJS("particles-js", {
+    "particles": {
+        "number": {"value":60,"density":{"enable":true,"value_area":800}},
+        "color":{"value":["#ff6b6b","#feca57","#48dbfb","#1dd1a1"]},
+        "shape":{"type":"circle"},
+        "opacity":{"value":0.3,"random":true},
+        "size":{"value":6,"random":true},
+        "line_linked":{"enable":false},
+        "move":{"enable":true,"speed":2,"direction":"none","random":true,"straight":false,"out_mode":"out"}
+    },
+    "interactivity": {
+        "detect_on":"canvas",
+        "events":{
+            "onhover":{"enable":true,"mode":"repulse"},
+            "onclick":{"enable":true,"mode":"push"}
+        },
+        "modes":{"repulse":{"distance":100,"duration":0.4},"push":{"particles_nb":4}}
+    },
+    "retina_detect":true
+});
+</script>
 
 </body>
 </html>
